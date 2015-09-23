@@ -37,7 +37,7 @@ public class Login extends HttpServlet {
 				//out.println("<html><body>");
 				//out.println("NAME:"+rs.getString("emp_name")+"</br> EMPLOYEE ID:"+rs.getString("emp_id")+"</br> PM:"+rs.getString("project_Manager")+"</br> DEPT:"+rs.getString("department")+"</br> LOCATION:"+rs.getString("location"));
 				//out.println("</body></html>");
-				request.getRequestDispatcher("secondpage.jsp").include(request,response);
+				request.getRequestDispatcher("firstpage.jsp").include(request,response);
 			}
 		}
 			catch(Exception e){
