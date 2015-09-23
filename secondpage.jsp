@@ -7,21 +7,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SubmitPage</title>
 <style>
-.heading, .line {		
-	font-size: 30px;
-}
-.dynamic,input{
-font-size:29px;
-}
-.table{
-position:relative;
-align:center;
-}
-.profilepic{
-position:relative;   <!--inorder to left attribute to work-->
-left:500px;}
-.save{
-font-size:15px;}
+	.heading, .line {
+		font-size: 30px;
+	}
+	.dynamic,input{
+	font-size:29px;
+	}
+	.table{
+	position:relative;
+	align:center;
+	}
+	.profilepic{
+	position:relative;
+	left:500px;}
+	.save{
+	font-size:15px;}
 </style>
 
 </head>
@@ -79,7 +79,7 @@ font-size:15px;}
 		
 		<table align="center">
 		<tr><td>
-		<form method="post" action="datasave">
+		<form id="myform" method="post" action="datasave.jsp">
 			<div class="dynamic">
 				col_1:<input type="text" name="col_1"
 					value="<%=rs.getString("col_1")%>" />
@@ -99,17 +99,17 @@ font-size:15px;}
 			<div class="save" align="center">
 				<input type="submit" value="save" />
 			</div>
-
+		
 		</form>
 		</td></tr></table>
-
 
 	</div>
 	<%
 		}
 		} catch (Exception e) {
 			System.err.print(e);
-		} finally {
+		} 
+		finally {
 			conn.close();
 		}
 	%>
