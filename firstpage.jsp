@@ -7,22 +7,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SubmitPage</title>
 <style>
-.heading, .line {
-	font-size: 30px;
-}
-input{
-font-size:29px;
-}
-.table{
-position:relative;
-align:center;
-}
-.profilepic{
-position:relative;
-left:500px;}
-.edit{
-font-size:15px;}
+	.heading, .line {
+		font-size: 30px;
+	}
+	input{
+	font-size:29px;
+	}
+	.table{
+	position:relative;
+	align:center;
+	}
+	.profilepic{
+	position:relative;
+	left:500px;}
+	.edit{
+	font-size:15px;}
 </style>
+
 
 </head>
 <body>
@@ -97,12 +98,12 @@ font-size:15px;}
 		</tr></div></table>
 		
 		
-		
+		<div class="edit" align="center">
 		<table>
 				<tr>
 					<td><form method="post" action="secondpage.jsp"><input type="submit" value="edit"/></form>		
 		
-		</table>
+		</table></div>
 		
 
 
