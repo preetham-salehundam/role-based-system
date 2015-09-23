@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SubmitPage</title>
 <style>
-.heading, .line {
+.heading, .line {		
 	font-size: 30px;
 }
 .dynamic,input{
@@ -18,7 +18,7 @@ position:relative;
 align:center;
 }
 .profilepic{
-position:relative;
+position:relative;   <!--inorder to left attribute to work-->
 left:500px;}
 .save{
 font-size:15px;}
