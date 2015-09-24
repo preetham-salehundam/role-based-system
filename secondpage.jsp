@@ -28,25 +28,31 @@
 <body>
 	<%@ page import="java.sql.*,java.io.*,javax.servlet.http.HttpServlet"%>
 
-	<%
-		Connection conn = null;
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Login", "root", "root");
-			String query = "select * from credentials where emp_id=?";
-			PreparedStatement stmt = conn.prepareStatement(query);
-			ServletContext context = this.getServletContext();
-			String emp_ID = (String) context.getAttribute("emp_ID");
-			stmt.setString(1, emp_ID);
-			ResultSet rs = stmt.executeQuery();
-			while (rs.next()) {
-	%>
+	<% String name=request.getParameter("emp_id");
+	String id=(String)session.getAttribute("id");
+
+	Connection conn = null;
+	
+		if(session!=null&&name.equals(id)){
+	
+			try {
+				Class.forName("com.mysql.jdbc.Driver");
+				conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Login", "root", "root");
+				String query = "select * from credentials where emp_id=?";
+				PreparedStatement stmt = conn.prepareStatement(query);
+				ServletContext context = this.getServletContext();
+				String emp_ID = (String) context.getAttribute("emp_ID");
+				stmt.setString(1, emp_ID);
+				ResultSet rs = stmt.executeQuery();
+				while (rs.next()) {  %>
+	
 
 	<div class="container" >
 		<div class="profilepic">
-	<img src="<%=emp_ID%>.jpg" height="200" width="190"/>
+			<img src="<%=emp_ID%>.jpg" height="200" width="190"/>
 		</div>
-		<table align="center">
+		
+	<table align="center">
 			<div class="static" >
 			<tr><td>	<label class="heading">Name:</label></td>
 			<td><span id="line1" class="line"><%=rs.getString("emp_name")%></span></td>
@@ -60,24 +66,25 @@
 		
 		
 		<div class="static">
-		<tr><td><label class="heading">Department:</label></td>
-		<td><span id="line3" class="line"><%=rs.getString("department")%></span></td>
+			<tr><td><label class="heading">Department:</label></td>
+			<td><span id="line3" class="line"><%=rs.getString("department")%></span></td>
 		</tr></div>
 		
 		
 		<div class="static">
-		<tr><td><label class="heading">Project Manager:</label></td> 
-		<td><span id="line4" class="line"><%=rs.getString("project_Manager")%></span></td>
+			<tr><td><label class="heading">Project Manager:</label></td> 
+			<td><span id="line4" class="line"><%=rs.getString("project_Manager")%></span></td>
 		</tr></div>
 		
 		
 		<div class="static">
-		<tr><td><label class="heading">Location:</label></td>
-		<td><span id="line5" class="line"><%=rs.getString("location")%></span></td>
-		</tr></div></table>
+			<tr><td><label class="heading">Location:</label></td>
+			<td><span id="line5" class="line"><%=rs.getString("location")%></span></td>
+		</tr></div>
+	</table>
 		
 		
-		<table align="center">
+	<table align="center">
 		<tr><td>
 		<form id="myform" method="post" action="datasave.jsp">
 			<div class="dynamic">
@@ -99,19 +106,44 @@
 			<div class="save" align="center">
 				<input type="submit" value="save" />
 			</div>
+			</form>
+		</td></tr>
+	</table>
+	
+		<div class="logout" align="center">
+		<table>
+				<tr>
+					<td><form method="post" action="Logout.jsp"><input type="submit" value="Logout"/></form>		
 		
-		</form>
-		</td></tr></table>
+		</table></div>
+		
 
 	</div>
-	<%
+	<% 
+			}
+			}
+	
+		catch(Exception e){
+		System.out.println(e.getMessage());
+		
+			}
+			finally{
+				
+				try {
+					conn.close();
+				} 
+				catch (SQLException e) {
+					
+					e.printStackTrace();
+				}
+			}
 		}
-		} catch (Exception e) {
-			System.err.print(e);
-		} 
-		finally {
-			conn.close();
-		}
+			else{
+				request.getRequestDispatcher("index.html").forward(request,response);			}
+	
+
+				
+						
 	%>
 
 
