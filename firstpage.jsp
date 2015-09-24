@@ -30,7 +30,10 @@
 	<%@ page import="java.sql.*,java.io.*,javax.servlet.http.HttpServlet"%>
 
 	<%
+	String name=request.getParameter("emp_id");
+	String id=(String)session.getAttribute("id");
 		Connection conn = null;
+	if(session!=null&&name.equals(id)){
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/Login", "root", "root");
@@ -105,6 +108,13 @@
 		
 		</table></div>
 		
+		<div class="logout" align="center">
+		<table>
+				<tr>
+					<td><form method="post" action="Logout.jsp"><input type="submit" value="Logout"/></form>		
+		
+		</table></div>
+		
 
 
 	</div>
@@ -115,6 +125,10 @@
 		} finally {
 			conn.close();
 		}
+	}
+	else{
+		request.getRequestDispatcher("index.html").include(request,response);
+	}
 	%>
 
 
