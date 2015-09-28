@@ -1,0 +1,10 @@
+# role-based-system
+login page :
+username: emp_id
+password: emp_id
+succesful login redirects to profile page
+profile contains a display picture,static data and mutable data
+on pressing edit button the controls redirects to a page with text forms
+once entered the necessary data and click the save button to save the data in the database
+and the page is directed to profile page with static data and data stored in database
+logout redirects to login page
